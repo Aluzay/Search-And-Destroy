@@ -1,29 +1,31 @@
 import * as React from 'react';
 import { BottomNavigation, Text } from 'react-native-paper';
 import FuseBomb from '../Screens/fuseBomb';
+import StartGame from '../Screens/startGame';
+import { StyleSheet } from 'react-native';
 
-const MusicRoute = () => <FuseBomb />;
+const PlayRoute = () => <StartGame/>;
 
-const AlbumsRoute = () => <Text>Albums</Text>;
+const AlbumsRoute = () => <FuseBomb/>;
 
-const RecentsRoute = () => <Text>Recents</Text>;
+const StatsRoute = () => <Text>Recents</Text>;
 
-const NotificationsRoute = () => <Text>Notifications</Text>;
+const RulesRoute = () => <Text>Notifications</Text>;
 
-const MyComponent = () => {
+const BottomNav = () => {
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
-    { key: 'music', title: 'Favorites', focusedIcon: 'heart', unfocusedIcon: 'heart-outline'},
+    { key: 'play', title: 'Play', focusedIcon: 'play', unfocusedIcon: 'play-outline' },
     { key: 'albums', title: 'Albums', focusedIcon: 'album' },
-    { key: 'recents', title: 'Recents', focusedIcon: 'history' },
-    { key: 'notifications', title: 'Notifications', focusedIcon: 'bell', unfocusedIcon: 'bell-outline' },
+    { key: 'stats', title: 'Stats', focusedIcon: 'align-vertical-bottom' },
+    { key: 'rules', title: 'Rules', focusedIcon: 'book-open-page-variant', unfocusedIcon: 'book-open-page-variant-outline' },
   ]);
 
   const renderScene = BottomNavigation.SceneMap({
-    music: MusicRoute,
+    play: PlayRoute,
     albums: AlbumsRoute,
-    recents: RecentsRoute,
-    notifications: NotificationsRoute,
+    stats: StatsRoute,
+    rules: RulesRoute,
   });
 
   return (
@@ -31,8 +33,20 @@ const MyComponent = () => {
       navigationState={{ index, routes }}
       onIndexChange={setIndex}
       renderScene={renderScene}
+      barStyle={styles.bottomNav}
+      activeColor='#5f8467'
+      inactiveColor='#fff'
+      activeIndicatorStyle={{ backgroundColor: '#94b29a' }}
     />
   );
 };
 
-export default MyComponent;
+const styles = StyleSheet.create(
+  {
+    bottomNav: {
+      backgroundColor: '#222',
+    },
+  }
+);
+
+export default BottomNav;
