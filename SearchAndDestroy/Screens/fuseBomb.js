@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
 
-export default function FuseBomb() {
+export default function FuseBomb({ navigation }) {
   const [input, setInput] = useState('');
   const [code, setCode] = useState('');
 
@@ -25,6 +25,7 @@ export default function FuseBomb() {
   };
 
   const handleArm = () => {
+    navigation.navigate('DefuseBomb');
     alert('Code saisi : ' + input + '\nBombe armée ! 🚨');
   };
 

@@ -2,13 +2,14 @@ import * as React from 'react';
 import { BottomNavigation, Text } from 'react-native-paper';
 import FuseBomb from '../Screens/fuseBomb';
 import StartGame from '../Screens/startGame';
+import DefuseBomb from '../Screens/defuseBomb';
 import { StyleSheet } from 'react-native';
 
 const PlayRoute = () => <StartGame/>;
 
 const AlbumsRoute = () => <FuseBomb/>;
 
-const StatsRoute = () => <Text>Recents</Text>;
+const StatsRoute = () => <DefuseBomb/>;
 
 const RulesRoute = () => <Text>Notifications</Text>;
 
